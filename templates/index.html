@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Personal Website</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        /* ================= GENERAL ================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #dff6ff, #eef2ff);
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: white;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4f46e5 !important;
+            cursor: pointer;
+        }
+
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+
+        .nav-link:hover {
+            color: #4f46e5 !important;
+        }
+
+
+        /* ================= MAIN CONTENT ================= */
+
+        .main-content {
+            padding-top: 75px;
+            min-height: 100vh;
+        }
+
+        .page {
+            display: none;
+            padding: 50px 20px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+
+        /* ================= HOME ================= */
+
+        .hero {
+            min-height: calc(100vh - 75px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            font-weight: bold;
+            color: #3730a3;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        .hero-icon {
+            font-size: 80px;
+            color: #4f46e5;
+            margin-bottom: 15px;
+        }
+
+        .main-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 13px 35px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .main-btn:hover {
+            background: #3730a3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        }
+
+
+        /* ================= LOGIN ================= */
+
+        .login-card {
+            max-width: 430px;
+            margin: 50px auto;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .login-card h2 {
+            color: #4f46e5;
+            font-weight: bold;
+        }
+
+        .input-group-text {
+            background: #4f46e5;
+            color: white;
+            border: none;
+        }
+
+        .form-control {
+            padding: 12px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        .login-btn:hover {
+            background: #3730a3;
+        }
+
+        .password-icon {
+            cursor: pointer;
+        }
+
+
+        /* ================= DASHBOARD ================= */
+
+        .dashboard-title {
+            text-align: center;
+            color: #3730a3;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .dashboard-card {
+            background: white;
+            border: none;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .dashboard-card i {
+            font-size: 45px;
+            color: #4f46e5;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card h4 {
+            font-weight: bold;
+        }
+
+
+        /* ================= DETAILS FORM ================= */
+
+        .details-card {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            color: #4f46e5;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .save-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+        }
+
+        .save-btn:hover {
+            background: #3730a3;
+        }
+
+
+        /* ================= COMMENTS ================= */
+
+        .comment-card {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .comment-card h2 {
+            color: #4f46e5;
+            font-weight: bold;
+        }
+
+        .comment-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 11px 25px;
+            border-radius: 10px;
+        }
+
+        .comment-btn:hover {
+            background: #3730a3;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .page {
+                padding: 30px 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- NAVBAR -->
+<!-- ================================================= -->
+
+<nav class="navbar navbar-expand-lg">
+
+    <div class="container">
+
+        <a class="navbar-brand"
+           onclick="showPage('home')">
+
+            <i class="bi bi-person-circle"></i>
+
+            My Website
+
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse"
+             id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       onclick="showPage('home')">
+                        <i class="bi bi-house"></i>
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       onclick="showPage('dashboard')">
+                        <i class="bi bi-grid"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       onclick="showPage('personalDetails')">
+                        <i class="bi bi-person"></i>
+                        My Details
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       onclick="showPage('comments')">
+                        <i class="bi bi-chat"></i>
+                        Comments
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       onclick="showPage('login')">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Login
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================================================= -->
+<!-- MAIN CONTENT -->
+<!-- ================================================= -->
+
+<div class="main-content">
+
+
+    <!-- ================= HOME ================= -->
+
+    <div id="home"
+         class="page active">
+
+        <div class="hero">
+
+            <div class="hero-content">
+
+                <i class="bi bi-person-vcard hero-icon"></i>
+
+                <h1>
+                    Welcome to My Personal Website
+                </h1>
+
+                <p>
+                    A simple and secure place to manage
+                    my personal, educational and professional details.
+                </p>
+
+                <button class="main-btn mt-3"
+                        onclick="showPage('login')">
+
+                    <i class="bi bi-box-arrow-in-right"></i>
+
+                    Login to Continue
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= LOGIN ================= -->
+
+    <div id="login"
+         class="page">
+
+        <div class="login-card">
+
+            <div class="text-center mb-4">
+
+                <i class="bi bi-person-circle"
+                   style="font-size:60px;color:#4f46e5;">
+                </i>
+
+                <h2 class="mt-2">
+                    Welcome Back
+                </h2>
+
+                <p class="text-muted">
+                    Login to access your personal details
+                </p>
+
+            </div>
+
+
+            <!-- Username -->
+
+            <div class="input-group mb-3">
+
+                <span class="input-group-text">
+
+                    <i class="bi bi-person"></i>
+
+                </span>
+
+                <input type="text"
+                       id="username"
+                       class="form-control"
+                       placeholder="Username">
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="input-group mb-3">
+
+                <span class="input-group-text">
+
+                    <i class="bi bi-lock"></i>
+
+                </span>
+
+                <input type="password"
+                       id="password"
+                       class="form-control"
+                       placeholder="Password">
+
+                <span class="input-group-text password-icon"
+                      onclick="togglePassword()">
+
+                    <i class="bi bi-eye"
+                       id="eyeIcon">
+                    </i>
+
+                </span>
+
+            </div>
+
+
+            <button class="login-btn"
+                    onclick="login()">
+
+                <i class="bi bi-box-arrow-in-right"></i>
+
+                Login
+
+            </button>
+
+
+            <p id="loginMessage"
+               class="text-center mt-3">
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <div id="dashboard"
+         class="page">
+
+        <div class="container">
+
+            <h2 class="dashboard-title">
+
+                <i class="bi bi-grid"></i>
+
+                Personal Dashboard
+
+            </h2>
+
+
+
+<!-- Logout Button -->
+<div class="text-end mb-4">
+    <button class="btn btn-danger"
+            onclick="logout()">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+    </button>
+</div>
+
+
+
+
+            <div class="row g-4">
+
+
+                <!-- Personal Details -->
+
+                <div class="col-md-4">
+
+                    <div class="dashboard-card">
+
+                        <i class="bi bi-person-vcard"></i>
+
+                        <h4>
+                            Personal Details
+                        </h4>
+
+                        <p class="text-muted">
+                            Manage your personal information.
+                        </p>
+
+                        <button class="btn btn-outline-primary"
+                                onclick="showPage('personalDetails')">
+
+                            View Details
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Education -->
+
+                <div class="col-md-4">
+
+                    <div class="dashboard-card">
+
+                        <i class="bi bi-mortarboard"></i>
+
+                        <h4>
+                            Education
+                        </h4>
+
+                        <p class="text-muted">
+                            Store your educational information.
+                        </p>
+
+                        <button class="btn btn-outline-primary"
+                                onclick="showPage('education')">
+
+                            Add Education
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Skills -->
+
+                <div class="col-md-4">
+
+                    <div class="dashboard-card">
+
+                        <i class="bi bi-code-slash"></i>
+
+                        <h4>
+                            Skills
+                        </h4>
+
+                        <p class="text-muted">
+                            Store your technical skills.
+                        </p>
+
+                        <button class="btn btn-outline-primary"
+                                onclick="showPage('skills')">
+
+                            Add Skills
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- PERSONAL DETAILS -->
+    <!-- ================================================= -->
+
+    <div id="personalDetails"
+         class="page">
+
+        <div class="details-card">
+
+            <h2 class="section-title text-center">
+
+                <i class="bi bi-person-vcard"></i>
+
+                Personal Details
+
+            </h2>
+
+
+            <div class="row g-3">
+
+
+                <!-- Name -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Full Name
+                    </label>
+
+                    <input type="text"
+                           id="name"
+                           class="form-control"
+                           placeholder="Enter your name">
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Email
+                    </label>
+
+                    <input type="email"
+                           id="email"
+                           class="form-control"
+                           placeholder="Enter your email">
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Phone
+                    </label>
+
+                    <input type="text"
+                           id="phone"
+                           class="form-control"
+                           placeholder="Enter phone number">
+
+                </div>
+
+
+                <!-- Date of Birth -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Date of Birth
+                    </label>
+
+                    <input type="date"
+                           id="dob"
+                           class="form-control">
+
+                </div>
+
+
+                <!-- Address -->
+
+                <div class="col-12">
+
+                    <label class="form-label">
+                        Address
+                    </label>
+
+                    <textarea id="address"
+                              class="form-control"
+                              rows="3"
+                              placeholder="Enter your address"></textarea>
+
+                </div>
+
+
+                <!-- Save -->
+
+                <div class="text-center mt-4">
+
+                    <button class="save-btn"
+                            onclick="savePersonalDetails()">
+
+                        <i class="bi bi-save"></i>
+
+                        Save Personal Details
+
+                    </button>
+
+                </div>
+
+
+                <p id="personalMessage"
+                   class="text-center mt-3">
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- EDUCATION -->
+    <!-- ================================================= -->
+
+    <div id="education"
+         class="page">
+
+        <div class="details-card">
+
+            <h2 class="section-title text-center">
+
+                <i class="bi bi-mortarboard"></i>
+
+                Education
+
+            </h2>
+
+
+            <div class="row g-3">
+
+
+                <!-- Degree -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Degree / Course
+                    </label>
+
+                    <input type="text"
+                           id="degree"
+                           class="form-control"
+                           placeholder="Example: B.Tech CSE">
+
+                </div>
+
+
+                <!-- College -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        College / University
+                    </label>
+
+                    <input type="text"
+                           id="college"
+                           class="form-control"
+                           placeholder="Enter college">
+
+                </div>
+
+
+                <!-- Year -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Year of Passing
+                    </label>
+
+                    <input type="text"
+                           id="year"
+                           class="form-control"
+                           placeholder="Example: 2026">
+
+                </div>
+
+
+                <!-- Percentage -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Percentage / CGPA
+                    </label>
+
+                    <input type="text"
+                           id="percentage"
+                           class="form-control"
+                           placeholder="Enter percentage or CGPA">
+
+                </div>
+
+
+                <!-- Save -->
+
+                <div class="text-center mt-4">
+
+                    <button class="save-btn"
+                            onclick="saveEducation()">
+
+                        <i class="bi bi-save"></i>
+
+                        Save Education
+
+                    </button>
+
+                </div>
+
+
+                <p id="educationMessage"
+                   class="text-center mt-3">
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- SKILLS -->
+    <!-- ================================================= -->
+
+    <div id="skills"
+         class="page">
+
+        <div class="details-card">
+
+            <h2 class="section-title text-center">
+
+                <i class="bi bi-code-slash"></i>
+
+                Skills
+
+            </h2>
+
+
+            <div class="row g-3">
+
+
+                <!-- Technical Skills -->
+
+                <div class="col-12">
+
+                    <label class="form-label">
+                        Technical Skills
+                    </label>
+
+                    <input type="text"
+                           id="skillName"
+                           class="form-control"
+                           placeholder="Example: Python, Flask, MySQL">
+
+                </div>
+
+
+                <!-- Skill Level -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Skill Level
+                    </label>
+
+                    <select id="skillLevel"
+                            class="form-select">
+
+                        <option value="">
+                            Select Skill Level
+                        </option>
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Save -->
+
+                <div class="text-center mt-4">
+
+                    <button class="save-btn"
+                            onclick="saveSkills()">
+
+                        <i class="bi bi-save"></i>
+
+                        Save Skills
+
+                    </button>
+
+                </div>
+
+
+                <p id="skillsMessage"
+                   class="text-center mt-3">
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= COMMENTS ================= -->
+
+    <div id="comments"
+         class="page">
+
+        <div class="comment-card">
+
+            <div class="text-center">
+
+                <i class="bi bi-chat-square-text"
+                   style="font-size:55px;color:#4f46e5;">
+                </i>
+
+                <h2 class="mt-2">
+                    Leave a Comment
+                </h2>
+
+                <p class="text-muted">
+                    Share your feedback.
+                </p>
+
+            </div>
+
+
+            <input type="text"
+                   id="commentName"
+                   class="form-control mb-3"
+                   placeholder="Your Name">
+
+
+            <textarea id="commentText"
+                      class="form-control mb-3"
+                      rows="5"
+                      placeholder="Write your comment..."></textarea>
+
+
+            <button class="comment-btn"
+                    onclick="submitComment()">
+
+                <i class="bi bi-send"></i>
+
+                Submit Comment
+
+            </button>
+
+
+            <p id="commentMessage"
+               class="text-center mt-3">
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- FOOTER -->
+<!-- ================================================= -->
+
+<footer>
+
+    <p>
+        © 2026 My Personal Website
+    </p>
+
+</footer>
+
+
+
+<!-- ================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script>
+
+
+/* ================= PAGE NAVIGATION ================= */
+
+function showPage(pageName) {
+
+    let pages = document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+
+    document.getElementById(pageName)
+            .classList.add("active");
+
+
+    // Close mobile navbar
+
+    let navbar =
+        document.getElementById("navbarMenu");
+
+    if (navbar.classList.contains("show")) {
+
+        navbar.classList.remove("show");
+
+    }
+
+}
+
+
+
+/* ================= PASSWORD ================= */
+
+function togglePassword() {
+
+    let password =
+        document.getElementById("password");
+
+    let eye =
+        document.getElementById("eyeIcon");
+
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        eye.className = "bi bi-eye-slash";
+
+    }
+
+    else {
+
+        password.type = "password";
+
+        eye.className = "bi bi-eye";
+
+    }
+
+}
+
+
+
+/* ================= LOGIN ================= */
+
+function login() {
+
+    let username =
+        document.getElementById("username").value.trim();
+
+    let password =
+        document.getElementById("password").value.trim();
+
+    let message =
+        document.getElementById("loginMessage");
+
+    if (username === "" || password === "") {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Please enter username and password.' +
+            '</span>';
+
+        return;
+    }
+
+    let formData = new FormData();
+
+    formData.append("username", username);
+    formData.append("password", password);
+
+    fetch("/login", {
+        method: "POST",
+        body: formData
+    })
+
+    .then(function(response) {
+        return response.text();
+    })
+
+    .then(function(data) {
+
+        if (data === "Login successful!") {
+
+            message.innerHTML =
+                '<span class="text-success">' +
+                data +
+                '</span>';
+
+            // Go to Dashboard
+            setTimeout(function() {
+                showPage("dashboard");
+            }, 1000);
+
+        } else {
+
+            message.innerHTML =
+                '<span class="text-danger">' +
+                data +
+                '</span>';
+        }
+
+    })
+
+    .catch(function(error) {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Error during login.' +
+            '</span>';
+
+        console.log(error);
+
+    });
+}
+
+
+
+/* ================= SAVE PERSONAL DETAILS ================= */
+
+function savePersonalDetails() {
+
+    let name =
+        document.getElementById("name").value.trim();
+
+    let email =
+        document.getElementById("email").value.trim();
+
+    let phone =
+        document.getElementById("phone").value.trim();
+
+    let dob =
+        document.getElementById("dob").value;
+
+    let address =
+        document.getElementById("address").value.trim();
+
+    let message =
+        document.getElementById("personalMessage");
+
+
+    if (name === "" || email === "") {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Please enter your name and email.' +
+            '</span>';
+
+        return;
+    }
+
+
+    let formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("dob", dob);
+    formData.append("address", address);
+
+
+    fetch("/save-personal-details", {
+        method: "POST",
+        body: formData
+    })
+
+    .then(function(response) {
+        return response.text();
+    })
+
+    .then(function(data) {
+
+        message.innerHTML =
+            '<span class="text-success">' +
+            data +
+            '</span>';
+
+    })
+
+    .catch(function(error) {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Error saving personal details.' +
+            '</span>';
+
+        console.log(error);
+
+    });
+
+}
+
+
+/* ================= SAVE EDUCATION ================= */
+
+function saveEducation() {
+
+    let degree =
+        document.getElementById("degree").value.trim();
+
+    let college =
+        document.getElementById("college").value.trim();
+
+    let year =
+        document.getElementById("year").value.trim();
+
+    let percentage =
+        document.getElementById("percentage").value.trim();
+
+    let message =
+        document.getElementById("educationMessage");
+
+
+    if (degree === "" || college === "") {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Please enter degree and college.' +
+            '</span>';
+
+        return;
+    }
+
+
+    let formData = new FormData();
+
+    formData.append("degree", degree);
+    formData.append("college", college);
+    formData.append("year", year);
+    formData.append("percentage", percentage);
+
+
+    fetch("/save-education", {
+        method: "POST",
+        body: formData
+    })
+
+    .then(function(response) {
+        return response.text();
+    })
+
+    .then(function(data) {
+
+        message.innerHTML =
+            '<span class="text-success">' +
+            data +
+            '</span>';
+
+    })
+
+    .catch(function(error) {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Error saving education.' +
+            '</span>';
+
+        console.log(error);
+
+    });
+
+}
+
+
+
+/* ================= SAVE SKILLS ================= */
+
+function saveSkills() {
+
+    let skill =
+        document.getElementById("skillName").value.trim();
+
+    let level =
+        document.getElementById("skillLevel").value;
+
+    let message =
+        document.getElementById("skillsMessage");
+
+
+    if (skill === "" || level === "") {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Please enter skill and select skill level.' +
+            '</span>';
+
+        return;
+    }
+
+
+    let formData = new FormData();
+
+    formData.append("skill_name", skill);
+    formData.append("skill_level", level);
+
+
+    fetch("/save-skills", {
+        method: "POST",
+        body: formData
+    })
+
+    .then(function(response) {
+        return response.text();
+    })
+
+    .then(function(data) {
+
+        message.innerHTML =
+            '<span class="text-success">' +
+            data +
+            '</span>';
+
+    })
+
+    .catch(function(error) {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Error saving skills.' +
+            '</span>';
+
+        console.log(error);
+
+    });
+
+}
+
+
+
+/* ================= COMMENTS ================= */
+
+function submitComment() {
+
+    let name =
+        document.getElementById("commentName")
+                .value.trim();
+
+    let comment =
+        document.getElementById("commentText")
+                .value.trim();
+
+    let message =
+        document.getElementById("commentMessage");
+
+    if (name === "" || comment === "") {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Please enter your name and comment.' +
+            '</span>';
+
+        return;
+    }
+
+    let formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("comment", comment);
+
+    fetch("/save-comment", {
+        method: "POST",
+        body: formData
+    })
+
+    .then(function(response) {
+        return response.text();
+    })
+
+    .then(function(data) {
+
+        message.innerHTML =
+            '<span class="text-success">' +
+            data +
+            '</span>';
+
+        document.getElementById("commentName")
+                .value = "";
+
+        document.getElementById("commentText")
+                .value = "";
+
+    })
+
+    .catch(function(error) {
+
+        message.innerHTML =
+            '<span class="text-danger">' +
+            'Error saving comment.' +
+            '</span>';
+
+        console.log(error);
+
+    });
+}
+
+
+
+
+function logout() {
+
+    fetch("/logout")
+    .then(function(response) {
+        return response.text();
+    })
+    .then(function(data) {
+
+        alert(data);
+
+        showPage("login");
+
+    })
+    .catch(function(error) {
+
+        console.log(error);
+
+    });
+}
+
+
+
+
+
+</script>
+
+
+
+<!-- Bootstrap JavaScript -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>
