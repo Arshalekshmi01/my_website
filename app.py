@@ -1,23 +1,21 @@
-from flask import Flask, render_template, request, session, redirect, url_for
-
-import mysql.connector
+import os
+import psycopg
+from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
 
-app.secret_key = "my_website_secret_key_123"
+app.secret_key = os.environ.get("SECRET_KEY", "my_website_secret_key_123")
 
 
-# ================= MYSQL CONNECTION =================
+# ================= POSTGRESQL CONNECTION =================
 
 def get_db_connection():
-    connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="personal_website"
-    )
+    database_url = os.environ.get("DATABASE_URL")
 
-    return connection
+    if not database_url:
+        raise Exception("DATABASE_URL is not configured")
+
+    return psycopg.connect(database_url)
 
 
 # ================= HOME =================
@@ -47,17 +45,13 @@ def save_personal_details():
         VALUES (%s, %s, %s, %s, %s)
     """
 
-    values = (name, email, phone, dob, address)
-
-    cursor.execute(query, values)
+    cursor.execute(query, (name, email, phone, dob, address))
 
     connection.commit()
-
     cursor.close()
     connection.close()
 
     return "Personal details saved successfully!"
-
 
 
 # ================= SAVE EDUCATION =================
@@ -79,19 +73,16 @@ def save_education():
         VALUES (%s, %s, %s, %s)
     """
 
-    values = (degree, college, year, percentage)
-
-    cursor.execute(query, values)
+    cursor.execute(query, (degree, college, year, percentage))
 
     connection.commit()
-
     cursor.close()
     connection.close()
 
     return "Education saved successfully!"
 
 
-
+# ================= SAVE SKILLS =================
 
 @app.route("/save-skills", methods=["POST"])
 def save_skills():
@@ -108,19 +99,13 @@ def save_skills():
         VALUES (%s, %s)
     """
 
-    values = (skill_name, skill_level)
-
-    cursor.execute(query, values)
+    cursor.execute(query, (skill_name, skill_level))
 
     connection.commit()
-
     cursor.close()
     connection.close()
 
     return "Skills saved successfully!"
-
-
-
 
 
 # ================= SAVE COMMENT =================
@@ -140,18 +125,13 @@ def save_comment():
         VALUES (%s, %s)
     """
 
-    values = (name, comment)
-
-    cursor.execute(query, values)
+    cursor.execute(query, (name, comment))
 
     connection.commit()
-
     cursor.close()
     connection.close()
 
     return "Comment submitted successfully!"
-
-
 
 
 # ================= LOGIN =================
@@ -181,12 +161,9 @@ def login():
         return "Login successful!"
     else:
         return "Invalid username or password."
-    
-    
-    
-    
-    
-    # ================= LOGOUT =================
+
+
+# ================= LOGOUT =================
 
 @app.route("/logout")
 def logout():
@@ -196,12 +173,7 @@ def logout():
     return "Logout successful!"
 
 
-
-
-
 # ================= RUN =================
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
