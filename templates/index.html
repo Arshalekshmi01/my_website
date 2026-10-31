@@ -92,8 +92,19 @@
         }
 
         .hero-content {
-            max-width: 750px;
-        }
+max-width: 750px;
+padding: 20px;
+}
+
+.profile-picture {
+width: 160px;
+height: 160px;
+object-fit: cover;
+border-radius: 50%;
+border: 5px solid white;
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+margin-bottom: 20px;
+}
 
         .hero h1 {
             font-size: 50px;
@@ -402,13 +413,13 @@
 
         <div class="hero">
 
-            <div class="hero-content">
+            <div class="hero-content"><img src="{{ url_for('static', filename='myphoto.jpg') }}"
+     alt="My Profile Picture"
+     class="profile-picture">
 
-                <i class="bi bi-person-vcard hero-icon"></i>
-
-                <h1>
-                    Hey Arshalekshmi!!! Welcome
-                </h1>
+<h1>
+    Hey Arshalekshmi!! Welcome
+</h1>
 
                 <p>
                     A simple and secure place to manage
